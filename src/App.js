@@ -7,6 +7,7 @@ import Register from './components/auth/Register'
 import Alert from './components/layout/Alert'
 import Dashboard from './components/dashboard/Dashboard'
 import CreateProfile from './components/profile-forms/CreateProfile'
+import EditProfile from './components/profile-forms/EditProfile'
 import PrivateRoute from './components/routing/PrivateRoute'
 
 //Redux
@@ -40,11 +41,19 @@ const App = () => {
           <Route exact path="/" element={<Landing/>} />
             <Route exact path="register" element={<Register />} />
             <Route exact path="login" element={<Login/>} />
+
             <Route exact path="dashboard" element={<PrivateRoute/>} >
               <Route exact path='/dashboard' element={<Dashboard/>}/>
-            </Route><Route exact path="create-profile" element={<PrivateRoute/>} >
+            </Route>
+
+            <Route exact path="create-profile" element={<PrivateRoute/>} >
               <Route exact path='/create-profile' element={<CreateProfile/>}/>
             </Route>
+
+            <Route exact path="edit-profile" element={<PrivateRoute/>} >
+              <Route exact path='/edit-profile' element={<EditProfile/>}/>
+            </Route>
+
           </Routes>
         </section>
       </Fragment>
