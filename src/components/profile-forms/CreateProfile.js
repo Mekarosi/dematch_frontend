@@ -7,7 +7,7 @@ import {  createProfile} from '../../actions/profile'
 
 
 const CreateProfile = ({ createProfile }) => { 
-    const history  = useNavigate();
+    const navigate  = useNavigate();
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -45,7 +45,7 @@ const CreateProfile = ({ createProfile }) => {
 
     const onSubmit = e => {
        e.preventDefault()
-       createProfile(formData, history)
+       createProfile(formData, navigate)
     }
 
     return (

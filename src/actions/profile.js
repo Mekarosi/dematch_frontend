@@ -29,7 +29,7 @@ export const getCurrentProfile = () => async dispatch => {
 }
 
 // Create or update profile
-export const createProfile = (formData, history, edit = false) => async dispatch => {
+export const createProfile = (formData, navigate, edit = false) => async dispatch => {
     
     try {
 
@@ -48,7 +48,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 
        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created'))
     if(!edit) {
-        history.push('/dashboard')
+        navigate('/dashboard')
       
     }
     } catch (err) { 
@@ -66,7 +66,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 }
 
 // Add Experience
-export const addExperience = (formData, history) => async dispatch => {
+export const addExperience = (formData, navigate) => async dispatch => {
     try {
 
         const config = {
@@ -83,7 +83,7 @@ export const addExperience = (formData, history) => async dispatch => {
        })
 
        dispatch(setAlert('Experience Added', 'success'))
-        history.push('/dashboard')
+        navigate('/dashboard')
       
     } catch (err) { 
         const errors = err.response.data.errors
@@ -100,7 +100,7 @@ export const addExperience = (formData, history) => async dispatch => {
 }
 
 // Add Education
-export const addEducation = (formData, history) => async dispatch => {
+export const addEducation = (formData, navigate) => async dispatch => {
     try {
 
         const config = {
@@ -117,10 +117,10 @@ export const addEducation = (formData, history) => async dispatch => {
        })
 
        dispatch(setAlert('Education Added', 'success'))
-        history.push('/dashboard')
+        navigate('/dashboard')
       
     } catch (err) { 
-        const errors = err.response.data.errors
+        const errors = err.response.data?.errors
 
         if(errors){
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))

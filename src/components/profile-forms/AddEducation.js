@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react'
-import { Link, useNavigate} from 'react-router-dom' 
+import { useNavigate } from 'react-router-dom' 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addEducation } from '../../actions/profile'
 
-const AddEducation = ({ addEducation, history }) => {
-
+const AddEducation = ({ addEducation }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     school: '',
     degree: '',
@@ -33,7 +33,7 @@ const AddEducation = ({ addEducation, history }) => {
       <small>* = required field</small>
       <form className="form" onSubmit={e => {
         e.preventDefault()
-        addEducation(formData, history)
+        addEducation(formData, navigate)
       }}>
         <div className="form-group">
           <input type="text" placeholder="* School or Bootcamp" name="school" value={school} onChange={(e) => onChange(e)} required />

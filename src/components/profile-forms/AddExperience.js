@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react'
-import { Link, useNavigate} from 'react-router-dom' 
+import { useNavigate} from 'react-router-dom' 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addExperience } from '../../actions/profile'
 
-const AddExperience = ({ addExperience, history }) => {
+const AddExperience = ({ addExperience }) => {
 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     company: '',
     title: '',
@@ -34,7 +35,7 @@ const AddExperience = ({ addExperience, history }) => {
       <small>* = required field</small>
       <form className="form" onSubmit={e => {
         e.preventDefault()
-        addExperience(formData, history)
+        addExperience(formData, navigate)
       }}>
         <div className="form-group">
           <input type="text" placeholder="* Job Title" name="title" value={title} onChange={(e) => onChange(e)} required />
