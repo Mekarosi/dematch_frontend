@@ -10,7 +10,7 @@ const ProfileItem = ({
       location,
       skills
     }
-    
+
 }) => {
     return <div className='profile bg-light'>
           <img src={avatar} alt='' className='round-img' />
