@@ -2,6 +2,7 @@ import axios from 'axios'
 import { setAlert } from './alert'
 import {
     DELETE_POST,
+    ADD_POST,
     GET_POSTS,
     POST_ERROR,
     UPDATE_LIKES
@@ -63,7 +64,7 @@ export const removeLike = id => async dispatch => {
 // Delete post
 export const deletePost = id => async dispatch => { 
     try {
-        const res = await axios.delete(`https://dematch202.onrender.com/api/posts/${id}`)
+         await axios.delete(`https://dematch202.onrender.com/api/posts/${id}`)
 
         dispatch({
             type: DELETE_POST,
@@ -71,6 +72,30 @@ export const deletePost = id => async dispatch => {
         })
 
         dispatch(setAlert('Post Removed', 'success'))
+    } catch (err) {
+        dispatch({ 
+            type: POST_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        })
+    }
+}
+
+// Add post
+export const addPost = formData => async dispatch => { 
+    const config = {
+        headers: {
+            'Content-Type' : 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post('https://dematch202.onrender.com/api/posts', formData, config)
+
+        dispatch({
+            type: ADD_POST,
+            payload: res.data
+        })
+
+        dispatch(setAlert('Post Created', 'success'))
     } catch (err) {
         dispatch({ 
             type: POST_ERROR,
