@@ -14,7 +14,7 @@ const Profile = ({ getProfileById, profile: { profile,loading }, auth }) => {
     const { id } = useParams();
     useEffect(() => {
         getProfileById(id)
-    }, [getProfileById])
+    }, [getProfileById, id])
 
 
   return (

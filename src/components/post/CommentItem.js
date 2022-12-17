@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -10,8 +10,7 @@ const CommentItem = ({
     comment: { _id, text, name, avatar, user, date},
     auth,
     deleteComment
- }) => {
-  return (
+ }) => 
     <div className="post bg-white p-1 my-1">
     <div>
       <Link to={`/profile/${user}`}>
@@ -41,8 +40,8 @@ const CommentItem = ({
       )}
     </div>
     </div>
-  )
-}
+  
+
 
 CommentItem.propTypes = {
     postId: PropTypes.number.isRequired,

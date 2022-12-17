@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #0d9009;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -19,6 +19,7 @@ body {
   line-height: 1.6;
   background-color: #fff;
   color: #333;
+  margin-top: -2.2rem;
 }
 
 a {

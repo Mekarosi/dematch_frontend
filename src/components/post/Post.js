@@ -8,30 +8,31 @@ import CommentForm from '../post/CommentForm'
 import CommentItem from '../post/CommentItem'
 import { Link, useParams } from 'react-router-dom'
 
-const Post = ({ getPost, post:{ post, loading } }) => {
+const Post = ({ getPost, post: { post, loading } }) => {
  
-    const id = useParams()
+    let { id } = useParams();
  
     useEffect(() => {
     getPost(id)
- }, [getPost])
+ }, [getPost, id])
  
  
-    return loading || post === null ? (
-    <Spinner /> 
-    ) : (
+ return ( loading || post === null ? (
+    <Spinner />
+  ) : (
     <Fragment>
-        <Link to='/post' className='btn'>
-            Back To Posts
-        </Link>
-        <PostItem  post={post}  showActions={false}/>
-        <CommentForm postId={post._id} />
-        <div className='comments'>
-            {post.comments.map( comment => (
-                <CommentItem key={comment._id} comment={comment} postId={post._id} />
-            ) )}
-        </div>
-    </Fragment>)
+      <Link to="/posts" className="btn">
+        Back To Posts
+      </Link>
+      <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._id} />
+      <div className="comments">
+        {post.comments.map((comment) => (
+          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+        ))}
+      </div>
+    </Fragment>
+ ));
 }
 
 Post.propTypes = {
